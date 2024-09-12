@@ -1,0 +1,73 @@
+create DATABASE Pape_bdji;
+use Pape_bdji
+create table Vehicules(
+plaque_d_immatriculation varchar(10),
+marque varchar(30),
+modele varchar(30),
+annee numeric,
+couleur varchar(30),
+niv varchar(30)
+);
+insert into Vehicules(plaque_d_immatriculation,marque,modele,annee,couleur,niv) values('ABC123','Toyota','Corolla',2020,'Blanc','2HGCM82633A004353');
+insert into Vehicules(plaque_d_immatriculation,marque,modele,annee,couleur,niv) values('XYZ789','Ford','Fusion',2018,'Bleu','2HGCM82633A004353');
+
+select * FROM  Vehicules
+
+create table Pilotes(
+prenom varchar(30),
+nom varchar(30),
+numero_licence varchar(30),
+telephone numeric,
+adresse varchar(40),
+ville varchar(30),
+etat varchar(30),
+code_postal numeric
+);
+insert into Pilotes(prenom,nom,numero_licence,telephone,adresse,ville,etat,code_postal) values('Michael','Smith','D1234567',1234567890,'123 Main St','Anytown','CA',12345);
+insert into Pilotes(prenom,nom,numero_licence,telephone,adresse,ville,etat,code_postal) values('Sarah','Connor','D7654321',0987654321,'456 Elm St','Otherville','NY',54321)
+
+select * FROM Pilotes
+
+create table Deplacements(
+vehiculeID int,
+conducteurID int,
+debutJour date,
+finJour date,
+debutLocation varchar(20),
+finLocation varchar(20),
+distance numeric
+);
+insert into Deplacements(vehiculeID,conducteurID,debutJour,finJour,debutLocation,finLocation,distance) values(1,1,'2024-07-01','2024-07-02','Los Angeles','San Francisco',380)
+insert into Deplacements(vehiculeID,conducteurID,debutJour,finJour,debutLocation,finLocation,distance) values(2,2,'2024-07-03','2024-07-04','New York','Washington DC',225)
+select * FROM Deplacements
+
+
+create table Entretien(
+vehiculeID int,
+dateMaintenance date,
+descriptionEntretien varchar(40),
+cout varchar(40)
+);
+insert into Entretien(vehiculeID,dateMaintenance,descriptionEntretien,cout) values(1,'2024-06-15','Vidange d"huile','50,00 $');
+insert into Entretien(vehiculeID,dateMaintenance,descriptionEntretien,cout) values(2,'2024-06-20','Remplacement des pneus','300,00 $')
+
+SELECT * FROM Entretien
+
+UPDATE Entretien set cout = '350,00 $'
+where vehiculeID = 2
+
+delete FROM Vehicules
+where plaque_d_immatriculation = 'ABC123'
+
+insert into Deplacements(vehiculeID,conducteurID,debutJour,finJour,debutLocation,finLocation,distance) values(2,1,'2024-07-05','2024-07-06','Boston','Philadelphie',300)
+
+UPDATE Vehicules set couleur = 'Rouge'
+where plaque_d_immatriculation = 'XYZ789'
+
+insert into Entretien(vehiculeID,dateMaintenance,descriptionEntretien,cout) values(1,'2024-07-10','Inspection des freins',' 100,00 $')
+
+UPDATE Pilotes set telephone = 2223334444
+where numero_licence = 'D1234567'
+
+delete FROM Deplacements
+where conducteurID = 2
